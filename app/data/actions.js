@@ -1,3 +1,9 @@
+export const increment = () => {
+	return {
+		type : 'INCREMENT'
+	}
+}
+
 export const addStar = (name, id) => {
 	return {
 		type : 'ADD_STAR',

@@ -1,10 +1,17 @@
 const initialState = {
 	stars : [],
-	loading : false
+	loading : false,
+	number : 1
 }
 
 const page = (state = initialState, action) => {
 	switch(action.type) {
+
+		case 'INCREMENT':
+			return {
+				...state,
+				number : ++state.number
+			}
 		case 'GET_STARS_REQUEST':
 			return {
 				...state,

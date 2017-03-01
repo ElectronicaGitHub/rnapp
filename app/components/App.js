@@ -24,6 +24,10 @@ const TabIcon = ({ selected, title }) => {
 
 class Application extends Component {
   render() {
+  
+    console.log(this.props.actions);
+    console.log(this.props.page);
+
     return (
       <Router>
         <Scene key="root">
