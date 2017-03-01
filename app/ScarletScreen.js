@@ -6,15 +6,23 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-export default class ScarletScreen extends Component {
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from './data/actions';
+
+class ScarletScreen extends Component {
   render() {
+
+    console.log(this.props.actions);
+    console.log(this.props.page);
+
     return (
       <View style={styles.container}>
         <Text
           style={styles.welcome}
-          onPress={() => Actions.gray()}
+          onPress={() => this.props.actions.increment()}
         >
-          Scarlet Screen
+          { this.props.page.number }
         </Text>
         <Text
           style={styles.welcome}
@@ -41,3 +49,17 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
 });
+
+const mapStateToProps = (state) => {
+  return {
+    page : state.page
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return  {
+    actions : bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ScarletScreen);
